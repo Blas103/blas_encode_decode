@@ -24,6 +24,21 @@ def encode(x):
     return enc_pw
 
 
+# Rachel decode function: takes in encoded password and returns the original password
+def decode(encoded_password):
+    decoded_password = ""
+
+    for char in encoded_password:
+        decoded_char = int(char) - 3
+
+        if decoded_char < 0:
+            decoded_char += 10
+
+        decoded_password += str(decoded_char)
+
+    return decoded_password
+
+
 while True:
     print("Menu\n-------------\n1. Encode\n2. Decode\n3. Quit\n")
     user_input = int(input("Please enter an option: "))
@@ -32,6 +47,6 @@ while True:
         password = encode(password)
         print("Your password has been encoded and stored!\n")
     elif user_input == 2:
-        pass
+        print(f"The encoded password is {password}, and the original password is {decode(password)}.")
     elif user_input == 3:
         break
